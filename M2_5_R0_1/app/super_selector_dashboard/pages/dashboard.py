@@ -9,8 +9,7 @@ PAGES = (
     "Executive Overview", "Top 10 Pressure Batters", "Top 10 Pressure Bowlers",
     "Batting Pressure Analytics", "Bowling Pressure Analytics", "Scenario Explorer",
     "Player Deep Dive", "Match and Delivery Explorer", "Pressure vs Normal Comparison",
-    "Consistency and Reliability", "Ranking Methodology", "Data Quality and Coverage",
-    "Sensitivity Analysis", "Export Centre",
+    "Consistency and Reliability", "Ranking Methodology", "Export Centre",
 )
 
 

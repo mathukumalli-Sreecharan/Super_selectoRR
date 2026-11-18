@@ -1,7 +1,7 @@
 {
   "data_version": "ipl-source-archive-a992ecd8",
   "methodology_version": "pressure-research-provisional-v0.1.0",
-  "generated_at_utc": "2026-11-18T18:28:29.567177+00:00",
+  "generated_at_utc": "2026-11-18T18:51:15.922330+00:00",
   "population": "IPL seasons 2022-2026 exact competition identifiers",
   "batter_status": "PROVISIONAL observational ordering; read the limitations in methodology_configuration.json",
   "bowler_status": "PROVISIONAL observational ordering; read the limitations in methodology_configuration.json",

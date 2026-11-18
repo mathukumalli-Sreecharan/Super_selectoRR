@@ -15,4 +15,4 @@ The first page load validates the archive, reconstructs delivery states, calcula
 
 ## Research status
 
-The dashboard includes automatic, provisional pressure orderings and a delivery evidence explorer. These are not formally approved rankings. Several source rows have unresolved extras semantics; see **Data Quality and Coverage**, `KNOWN_LIMITATIONS.md`, and `data/exports/methodology_configuration.json` before interpreting the results.
+The dashboard includes automatic, provisional pressure orderings and a delivery evidence explorer. These are not formally approved rankings. Several source rows have unresolved extras semantics; see `KNOWN_LIMITATIONS.md` and `data/exports/methodology_configuration.json` before interpreting the results.
