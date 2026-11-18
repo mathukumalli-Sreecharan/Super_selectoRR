@@ -1,6 +1,6 @@
 import pandas as pd
 
-from services.pressure_product import _attribute, reconstruct_states, classify_scenarios
+from services.pressure_product import _attribute, reconstruct_states, classify_scenarios, prior_baselines, _rank
 
 
 def test_extras_attribution_reconciles_or_explicitly_excludes():
@@ -41,3 +41,29 @@ def test_state_is_strictly_pre_delivery_and_invalid_outcome_only_affects_later_s
     classified = classify_scenarios(states)
     assert classified.pressure.tolist() == [False, False, False]
     assert classified.B1.tolist() == [False, False, False]
+
+
+def test_prior_baseline_excludes_current_delivery():
+    rows = pd.DataFrame([
+        {"delivery_ist_time": f"2022-01-01T00:0{i}:00Z", "match_id": "M", "innings_n": 1, "sequence": i,
+         "striker_id": "B", "bowler_id": "W", "delivery_batter_runs": runs, "batter_faced": 1,
+         "delivery_bowler_runs": runs, "legal_ball": 1}
+        for i, runs in enumerate([4, 0, 6], 1)
+    ])
+    result = prior_baselines(rows)
+    assert result.bat_prior_exposure.tolist() == [0, 1, 2]
+    assert pd.isna(result.bat_prior_rate.iloc[0])
+    assert result.bat_prior_rate.iloc[1] == 4
+    assert result.bat_prior_rate.iloc[2] == 2
+
+
+def test_provisional_rank_is_automatic_deterministic_and_applies_evidence_floor():
+    candidates = pd.DataFrame([
+        {"player_id": "A", "matches": 8, "opportunities": 50, "baseline_events": 50, "delta_vs_prior": 5.0, "scenario_coverage": 4, "pressure_strike_rate": 150},
+        {"player_id": "B", "matches": 6, "opportunities": 35, "baseline_events": 35, "delta_vs_prior": 8.0, "scenario_coverage": 3, "pressure_strike_rate": 140},
+        {"player_id": "C", "matches": 2, "opportunities": 12, "baseline_events": 12, "delta_vs_prior": 99.0, "scenario_coverage": 2, "pressure_strike_rate": 200},
+    ])
+    ranked = _rank(candidates, "batting")
+    assert ranked.player_id.tolist() == ["B", "A"]
+    assert ranked["rank"].tolist() == [1, 2]
+    assert "C" not in ranked.player_id.tolist()

@@ -234,7 +234,7 @@ def reconstruct_states(x: pd.DataFrame, matches: pd.DataFrame, playing: pd.DataF
 
 def classify_scenarios(x: pd.DataFrame) -> pd.DataFrame:
     x = x.sort_values(["match_id", "innings_n", "sequence"], kind="stable").copy()
-    recent = x.recent_wickets_12_legal_balls.fillna(0)
+    recent = pd.to_numeric(x.recent_wickets_12_legal_balls, errors="coerce").fillna(0)
     pp = x.legal_balls_before < 36
     middle = x.legal_balls_before.between(36, 89)
     death = x.legal_balls_remaining <= 30
@@ -259,7 +259,9 @@ def classify_scenarios(x: pd.DataFrame) -> pd.DataFrame:
     # B10 captures pressure transitions from adjacent pre-delivery states in strict sequence.
     prior = x.groupby(["match_id", "innings_n"], sort=False).pressure.shift(1)
     x["B10"] = valid & prior.notna() & x.pressure.ne(prior)
-    x["pressure_change"] = np.select([x.pressure & prior.eq(False), ~x.pressure & prior.eq(True)], ["INCREASE", "REDUCTION"], default="NO_CHANGE_OR_FIRST")
+    pressure_flag = x.pressure.astype("boolean").fillna(False).astype(bool)
+    prior_flag = prior.eq(True)
+    x["pressure_change"] = np.select([pressure_flag & prior.eq(False), ~pressure_flag & prior_flag], ["INCREASE", "REDUCTION"], default="NO_CHANGE_OR_FIRST")
     # Pressure flags are discipline-specific, even where scenario evidence overlaps.
     x["batting_pressure"] = valid & x.pressure
     x["bowling_pressure"] = valid & x.pressure
@@ -413,13 +415,17 @@ def build_product(write=True):
     # Sensitivity over plausible minimum coverage floors and seasonal pressure alternatives.
     sensitivity = []
     base_top = {}
+    base_rank_map = {}
     for discipline, table in [("batting", bat), ("bowling", bowl)]:
-        base_top[discipline] = table.player_id.astype(str).head(10).tolist()
+        primary_ranks = _rank(table, discipline)
+        base_top[discipline] = primary_ranks.player_id.astype(str).head(10).tolist()
+        base_rank_map[discipline] = dict(zip(primary_ranks.player_id.astype(str), primary_ranks["rank"].astype(int)))
         for m, n in [(3, 15), (5, 30), (10, 60)]:
             ranks = _rank(table, discipline, m, n)
+            motion = [{"player_id": str(row.player_id), "primary_rank": base_rank_map[discipline].get(str(row.player_id)), "variant_rank": int(row["rank"])} for _, row in ranks.head(10).iterrows()]
             sensitivity.append({"discipline": discipline, "variant": f"coverage_{m}matches_{n}opps", "eligible": len(ranks),
                                 "top10_ids": ",".join(ranks.player_id.astype(str).head(10)), "top10_names": " | ".join(ranks.iloc[:, 2].astype(str).head(10)) if len(ranks) else "",
-                                "overlap_with_primary": len(set(base_top[discipline]) & set(ranks.player_id.astype(str).head(10)))})
+                                "overlap_with_primary": len(set(base_top[discipline]) & set(ranks.player_id.astype(str).head(10))), "rank_movement_top10": json.dumps(motion)})
     # Pressure-boundary alternatives use the same outcome attribution and prior-only baselines.
     for label, multiplier, wickets_left, early, late in [("pressure_loose", 0.9, 8, 3, 5), ("pressure_primary", 1.0, 8, 4, 6), ("pressure_strict", 1.25, 6, 5, 7)]:
         alt = x.copy()
@@ -431,9 +437,10 @@ def build_product(write=True):
             table = _group_summary(alt, f"{discipline}_pressure", discipline)
             ranks = _rank(table, discipline)
             ids = ranks.player_id.astype(str).head(10).tolist()
+            motion = [{"player_id": str(row.player_id), "primary_rank": base_rank_map[discipline].get(str(row.player_id)), "variant_rank": int(row["rank"])} for _, row in ranks.head(10).iterrows()]
             sensitivity.append({"discipline": discipline, "variant": label, "eligible": len(ranks), "top10_ids": ",".join(ids),
                                 "top10_names": " | ".join(ranks.iloc[:, 2].astype(str).head(10)) if len(ranks) else "",
-                                "overlap_with_primary": len(set(base_top[discipline]) & set(ids))})
+                                "overlap_with_primary": len(set(base_top[discipline]) & set(ids)), "rank_movement_top10": json.dumps(motion)})
     # Leave-one-season-out ranking stability. All baseline events remain strictly prior-only.
     for season in SEASONS:
         remaining = x[x.season.ne(season)]
@@ -441,9 +448,10 @@ def build_product(write=True):
             table = _group_summary(remaining, f"{discipline}_pressure", discipline)
             ranks = _rank(table, discipline)
             ids = ranks.player_id.astype(str).head(10).tolist()
+            motion = [{"player_id": str(row.player_id), "primary_rank": base_rank_map[discipline].get(str(row.player_id)), "variant_rank": int(row["rank"])} for _, row in ranks.head(10).iterrows()]
             sensitivity.append({"discipline": discipline, "variant": f"leave_out_{season}", "eligible": len(ranks), "top10_ids": ",".join(ids),
                                 "top10_names": " | ".join(ranks.iloc[:, 2].astype(str).head(10)) if len(ranks) else "",
-                                "overlap_with_primary": len(set(base_top[discipline]) & set(ids))})
+                                "overlap_with_primary": len(set(base_top[discipline]) & set(ids)), "rank_movement_top10": json.dumps(motion)})
     # Population and all exclusions are generated from the same filtered source run.
     per_season_match = matches.groupby("season").match_id.nunique().to_dict()
     per_season_deliveries = d.groupby("season").size().to_dict()
@@ -471,8 +479,9 @@ def build_product(write=True):
         {"item": "unresolved_extras_or_run_semantics", "value": int(x.attribution_status.ne("RECONCILED").sum()), "status": "EXCLUDED_FROM_STATE"},
         {"item": "extras_rows_by_reason", "value": json.dumps({f"{a}|{b}": int(n) for (a,b),n in x.groupby(["extras_type", "attribution_reason"], dropna=False).size().items()}, sort_keys=True), "status": "SOURCE_RECONCILIATION"},
         {"item": "runs_total_interpretation_validation", "value": json.dumps({"wide_rows_with_runs_zero_and_extras_positive": int((x.extras_type.eq("wide") & x.runs_n.eq(0) & x.extras1_runs_n.gt(0)).sum()), "byes_legbyes_rows_with_runs_zero_and_extras_positive": int((x.extras_type.isin(["byes", "legbyes"]) & x.runs_n.eq(0) & x.extras1_runs_n.gt(0)).sum()), "overstep_rows_not_equal_components": int((x.extras_type.eq("Overstep") & x.runs_n.ne(x.extras1_runs_n + x.extras_2_runs_n)).sum())}, sort_keys=True), "status": "CONFLICTS_WITH_SUPPLIED_INTERPRETATION"},
-        {"item": "innings_state_complete", "value": int(x.groupby(["match_id", "innings_n"]).state_status.apply(lambda s: s.eq("RECONSTRUCTED").all()).sum()), "status": "COVERAGE"},
-        {"item": "innings_state_partial", "value": int(x.groupby(["match_id", "innings_n"]).state_status.apply(lambda s: s.ne("RECONSTRUCTED").any()).sum()), "status": "COVERAGE"},
+        {"item": "innings_pre_state_complete", "value": int(x.groupby(["match_id", "innings_n"]).state_status.apply(lambda s: s.eq("RECONSTRUCTED").all()).sum()), "status": "PRE_DELIVERY_STATE_COVERAGE"},
+        {"item": "innings_with_all_outcomes_reconciled", "value": int(x.groupby(["match_id", "innings_n"]).attribution_status.apply(lambda s: s.eq("RECONCILED").all()).sum()), "status": "POST_DELIVERY_STATE_COVERAGE"},
+        {"item": "innings_with_partial_outcome_data", "value": int(x.groupby(["match_id", "innings_n"]).attribution_status.apply(lambda s: s.ne("RECONCILED").any()).sum()), "status": "POST_DELIVERY_STATE_COVERAGE"},
         {"item": "unresolved_player_competition_id_pairs", "value": len(unresolved_ids), "status": "EXACT_ID_JOIN_ONLY"},
         {"item": "unsupported_dismissal_ids", "value": json.dumps(x.loc[x.is_wicket_b & ~x.dismissal_type_id_n.isin([1,2,3,4,5]), "dismissal_type_id"].value_counts().to_dict()), "status": "EXPLICITLY_UNMAPPED"},
         {"item": "pressure_deliveries", "value": int(x.batting_pressure.sum()), "status": "PROVISIONAL_CLASSIFICATION"},
@@ -505,7 +514,7 @@ def build_product(write=True):
         ("bowlers", bowl_rank, "bowler_id", "bowling_pressure", "bowling_scenarios", bowl_scenario),
     ]:
         rows = []
-        for _, player in rank_table.head(10).iterrows():
+        for pos, (_, player) in enumerate(rank_table.head(10).iterrows()):
             pid = str(player.player_id)
             p_events = x[(x[event_col].astype(str) == pid) & x[pressure_col] & x.delivery_ref.notna()]
             scenario_rows = scenario_table[scenario_table.player_id.astype(str).eq(pid)]
@@ -515,7 +524,9 @@ def build_product(write=True):
             base["evidence_delivery_refs_sample"] = refs
             base["best_scenarios_by_prior_contrast"] = scenario_rows.head(3).scenario.tolist() if not scenario_rows.empty else []
             base["weakest_scenarios_by_prior_contrast"] = scenario_rows.tail(3).sort_values("delta_vs_prior").scenario.tolist() if not scenario_rows.empty else []
-            base["why_ranked_here"] = f"Prior-only pressure contrast {player.get('delta_vs_prior', np.nan):.2f}; ordered above the next eligible candidate by this value, with scenario coverage and distinct matches as tie-breakers."
+            next_player = rank_table.iloc[pos + 1] if pos + 1 < min(10, len(rank_table)) else None
+            next_clause = f" Next is {next_player.get('striker_name' if discipline == 'batting' else 'bowler_name')} at {next_player.get('delta_vs_prior', np.nan):.2f}." if next_player is not None else " This is the final eligible position."
+            base["why_ranked_here"] = f"Prior-only pressure contrast {player.get('delta_vs_prior', np.nan):.2f}; ordered by that dimension, with scenario coverage and distinct matches as tie-breakers.{next_clause}"
             base["limitations"] = "Provisional pressure definition and eligibility floor; descriptive raw comparison; no role adjustment or clustered uncertainty interval."
             rows.append(base)
         explanations[label] = rows

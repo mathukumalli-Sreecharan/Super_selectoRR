@@ -8,6 +8,11 @@
     "band": "binary research flag; continuous required-rate and wickets-remaining fields retained",
     "rationale": "Uses season-specific observed first-innings scoring rate as a chase benchmark and explicit resource-loss states. This is a candidate operational definition, not formally approved."
   },
+  "pressure_sensitivity": {
+    "looser": "chase required rate >=0.9 x season benchmark and wickets remaining<=8; first innings >=3 wickets before legal ball 60 or >=5 before legal ball 90",
+    "primary": "chase required rate >=1.0 x season benchmark and wickets remaining<=8; first innings >=4 wickets before legal ball 60 or >=6 before legal ball 90",
+    "stricter": "chase required rate >=1.25 x season benchmark and wickets remaining<=6; first innings >=5 wickets before legal ball 60 or >=7 before legal ball 90"
+  },
   "scenarios": {
     "B1": "legal balls before delivery <36 and wickets lost >=2",
     "B2": "36<=legal balls<90",
@@ -32,5 +37,7 @@
     "B2 role is not inferred as anchor/aggressor; role is unavailable as a validated pre-event field.",
     "Partnership and recent-wicket states are delivery reconstructed; DLS effective time is unavailable, so revised-target matches are excluded from chase classification.",
     "Ranks are descriptive pressure-performance orderings and do not claim causal or uncertainty-adjusted player quality."
-  ]
+  ],
+  "generated_at_utc": "2026-11-18T18:13:36.390233+00:00",
+  "metric_definition": "Versioned provisional pressure classification, scenarios, population, and known limitations."
 }
