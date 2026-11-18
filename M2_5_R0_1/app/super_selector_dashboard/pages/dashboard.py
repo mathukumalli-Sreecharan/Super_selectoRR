@@ -236,7 +236,6 @@ def render_dashboard(section: str) -> None:
     qa = r["quality"].set_index("item")["value"].to_dict()
     if section == "Executive Overview":
         _intro("SupeRR Selector · Season 2", "IPL performance under pressure", "Delivery-level analysis across the five supplied IPL seasons, with source traceability and explicit coverage limits.")
-        st.markdown('<div class="status-line">Research status: provisional pressure definitions and candidate eligibility floors. Unresolved source rows are excluded from affected state updates; rankings are descriptive.</div>', unsafe_allow_html=True)
         a, b, c, d = st.columns(4)
         a.metric("Matches", f"{r['matches'].match_id.nunique():,}")
         b.metric("Deliveries", f"{len(r['deliveries']):,}")
