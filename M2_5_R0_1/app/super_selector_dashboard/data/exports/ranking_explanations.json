@@ -1,7 +1,7 @@
 {
   "data_version": "ipl-source-archive-a992ecd8",
   "methodology_version": "pressure-research-provisional-v0.1.0",
-  "generated_at_utc": "2026-11-18T18:13:35.976934+00:00",
+  "generated_at_utc": "2026-11-18T18:28:29.567177+00:00",
   "population": "IPL seasons 2022-2026 exact competition identifiers",
   "batter_status": "PROVISIONAL observational ordering; read the limitations in methodology_configuration.json",
   "bowler_status": "PROVISIONAL observational ordering; read the limitations in methodology_configuration.json",
@@ -31,6 +31,7 @@
       "dismissal_frequency": 0.07547169811320754,
       "player_id": "818",
       "scenario_coverage": 9,
+      "scenario_contribution": "B1, B2, B3, B5, B6, B7, B8, B9, B10",
       "pressure_deliveries": 53,
       "reliability": "MODERATE_COVERAGE",
       "eligibility_status": "PROVISIONALLY_ELIGIBLE",
@@ -40,6 +41,7 @@
       "season_level_consistency_sd": 14.961969572932738,
       "consistency_status": "DESCRIPTIVE_SD_AVAILABLE",
       "pressure_definition": "provisional-v0.1",
+      "teams": "Delhi Capitals, Lucknow Super Giants",
       "evidence_delivery_refs_sample": [
         "14120:2:74",
         "14120:2:76",
@@ -110,6 +112,7 @@
       "dismissal_frequency": 0.07692307692307693,
       "player_id": "29888",
       "scenario_coverage": 6,
+      "scenario_contribution": "B2, B4, B5, B6, B8, B9",
       "pressure_deliveries": 39,
       "reliability": "MODERATE_COVERAGE",
       "eligibility_status": "PROVISIONALLY_ELIGIBLE",
@@ -119,6 +122,7 @@
       "season_level_consistency_sd": 52.10260492953509,
       "consistency_status": "DESCRIPTIVE_SD_AVAILABLE",
       "pressure_definition": "provisional-v0.1",
+      "teams": "Kolkata Knight Riders",
       "evidence_delivery_refs_sample": [
         "14147:2:89",
         "40705:1:80",
@@ -189,6 +193,7 @@
       "dismissal_frequency": 0.07547169811320754,
       "player_id": "6288",
       "scenario_coverage": 8,
+      "scenario_contribution": "B1, B2, B3, B4, B7, B8, B9, B10",
       "pressure_deliveries": 53,
       "reliability": "MODERATE_COVERAGE",
       "eligibility_status": "PROVISIONALLY_ELIGIBLE",
@@ -198,6 +203,7 @@
       "season_level_consistency_sd": 81.39232548679357,
       "consistency_status": "DESCRIPTIVE_SD_AVAILABLE",
       "pressure_definition": "provisional-v0.1",
+      "teams": "Gujarat Titans",
       "evidence_delivery_refs_sample": [
         "14109:2:94",
         "14109:2:95",
@@ -268,6 +274,7 @@
       "dismissal_frequency": 0.05,
       "player_id": "1440",
       "scenario_coverage": 7,
+      "scenario_contribution": "B1, B2, B3, B7, B8, B9, B10",
       "pressure_deliveries": 40,
       "reliability": "MODERATE_COVERAGE",
       "eligibility_status": "PROVISIONALLY_ELIGIBLE",
@@ -277,6 +284,7 @@
       "season_level_consistency_sd": 2.9462782549439614,
       "consistency_status": "DESCRIPTIVE_SD_AVAILABLE",
       "pressure_definition": "provisional-v0.1",
+      "teams": "Chennai Super Kings, Sunrisers Hyderabad",
       "evidence_delivery_refs_sample": [
         "14105:2:34",
         "14105:2:35",
@@ -347,6 +355,7 @@
       "dismissal_frequency": 0.06896551724137931,
       "player_id": "6671",
       "scenario_coverage": 7,
+      "scenario_contribution": "B1, B2, B4, B5, B6, B8, B9",
       "pressure_deliveries": 58,
       "reliability": "MODERATE_COVERAGE",
       "eligibility_status": "PROVISIONALLY_ELIGIBLE",
@@ -356,6 +365,7 @@
       "season_level_consistency_sd": 62.83733604481792,
       "consistency_status": "DESCRIPTIVE_SD_AVAILABLE",
       "pressure_definition": "provisional-v0.1",
+      "teams": "Delhi Capitals",
       "evidence_delivery_refs_sample": [
         "14095:2:29",
         "14095:2:33",
@@ -426,6 +436,7 @@
       "dismissal_frequency": 0.05825242718446602,
       "player_id": "6725",
       "scenario_coverage": 7,
+      "scenario_contribution": "B1, B2, B3, B4, B8, B9, B10",
       "pressure_deliveries": 103,
       "reliability": "MODERATE_COVERAGE",
       "eligibility_status": "PROVISIONALLY_ELIGIBLE",
@@ -435,6 +446,7 @@
       "season_level_consistency_sd": 57.83533056243866,
       "consistency_status": "DESCRIPTIVE_SD_AVAILABLE",
       "pressure_definition": "provisional-v0.1",
+      "teams": "Gujarat Titans, Mumbai Indians, Royal Challengers Bengaluru",
       "evidence_delivery_refs_sample": [
         "14106:2:56",
         "14106:2:57",
@@ -505,6 +517,7 @@
       "dismissal_frequency": 0.08108108108108109,
       "player_id": "305",
       "scenario_coverage": 8,
+      "scenario_contribution": "B2, B3, B4, B5, B6, B8, B9, B10",
       "pressure_deliveries": 37,
       "reliability": "MODERATE_COVERAGE",
       "eligibility_status": "PROVISIONALLY_ELIGIBLE",
@@ -514,6 +527,7 @@
       "season_level_consistency_sd": 96.17818084473835,
       "consistency_status": "DESCRIPTIVE_SD_AVAILABLE",
       "pressure_definition": "provisional-v0.1",
+      "teams": "Chennai Super Kings, Rajasthan Royals",
       "evidence_delivery_refs_sample": [
         "14113:1:64",
         "14162:2:73",
@@ -584,6 +598,7 @@
       "dismissal_frequency": 0.053475935828877004,
       "player_id": "3125",
       "scenario_coverage": 9,
+      "scenario_contribution": "B1, B2, B3, B4, B5, B6, B8, B9, B10",
       "pressure_deliveries": 187,
       "reliability": "HIGHER_COVERAGE",
       "eligibility_status": "PROVISIONALLY_ELIGIBLE",
@@ -593,6 +608,7 @@
       "season_level_consistency_sd": 49.11957091488826,
       "consistency_status": "DESCRIPTIVE_SD_AVAILABLE",
       "pressure_definition": "provisional-v0.1",
+      "teams": "Lucknow Super Giants, Sunrisers Hyderabad",
       "evidence_delivery_refs_sample": [
         "14114:2:103",
         "14114:2:104",
@@ -663,6 +679,7 @@
       "dismissal_frequency": 0.04081632653061224,
       "player_id": "198",
       "scenario_coverage": 6,
+      "scenario_contribution": "B1, B2, B5, B6, B8, B9",
       "pressure_deliveries": 98,
       "reliability": "MODERATE_COVERAGE",
       "eligibility_status": "PROVISIONALLY_ELIGIBLE",
@@ -672,6 +689,7 @@
       "season_level_consistency_sd": 17.57792994743054,
       "consistency_status": "DESCRIPTIVE_SD_AVAILABLE",
       "pressure_definition": "provisional-v0.1",
+      "teams": "Delhi Capitals, Kolkata Knight Riders, Lucknow Super Giants",
       "evidence_delivery_refs_sample": [
         "20200:2:36",
         "20200:2:37",
@@ -742,6 +760,7 @@
       "dismissal_frequency": 0.03333333333333333,
       "player_id": "7216",
       "scenario_coverage": 5,
+      "scenario_contribution": "B1, B2, B7, B8, B10",
       "pressure_deliveries": 60,
       "reliability": "MODERATE_COVERAGE",
       "eligibility_status": "PROVISIONALLY_ELIGIBLE",
@@ -751,6 +770,7 @@
       "season_level_consistency_sd": 66.67885449935143,
       "consistency_status": "DESCRIPTIVE_SD_AVAILABLE",
       "pressure_definition": "provisional-v0.1",
+      "teams": "Punjab Kings",
       "evidence_delivery_refs_sample": [
         "20207:2:35",
         "20207:2:36",
@@ -823,6 +843,7 @@
       "dot_pct": 44.086021505376344,
       "player_id": "5939",
       "scenario_coverage": 6,
+      "scenario_contribution": "W1, W2, W3, W4, W5, W6",
       "reliability": "MODERATE_COVERAGE",
       "eligibility_status": "PROVISIONALLY_ELIGIBLE",
       "consistency": "MATCH AND SEASON DISPERSION SHOWN; not uncertainty",
@@ -831,6 +852,7 @@
       "season_level_consistency_sd": 2.1541992240545564,
       "consistency_status": "DESCRIPTIVE_SD_AVAILABLE",
       "pressure_definition": "provisional-v0.1",
+      "teams": "Kolkata Knight Riders, Mumbai Indians, Royal Challengers Bengaluru",
       "evidence_delivery_refs_sample": [
         "20205:2:51",
         "20205:2:52",
@@ -901,6 +923,7 @@
       "dot_pct": 47.368421052631575,
       "player_id": "7325",
       "scenario_coverage": 2,
+      "scenario_contribution": "W2, W5",
       "reliability": "MODERATE_COVERAGE",
       "eligibility_status": "PROVISIONALLY_ELIGIBLE",
       "consistency": "MATCH AND SEASON DISPERSION SHOWN; not uncertainty",
@@ -909,6 +932,7 @@
       "season_level_consistency_sd": 2.972956594726439,
       "consistency_status": "DESCRIPTIVE_SD_AVAILABLE",
       "pressure_definition": "provisional-v0.1",
+      "teams": "Punjab Kings",
       "evidence_delivery_refs_sample": [
         "14101:2:44",
         "14101:2:45",
@@ -979,6 +1003,7 @@
       "dot_pct": 45.714285714285715,
       "player_id": "3298",
       "scenario_coverage": 6,
+      "scenario_contribution": "W1, W2, W3, W4, W5, W6",
       "reliability": "HIGHER_COVERAGE",
       "eligibility_status": "PROVISIONALLY_ELIGIBLE",
       "consistency": "MATCH AND SEASON DISPERSION SHOWN; not uncertainty",
@@ -987,6 +1012,7 @@
       "season_level_consistency_sd": 2.3298261892941374,
       "consistency_status": "DESCRIPTIVE_SD_AVAILABLE",
       "pressure_definition": "provisional-v0.1",
+      "teams": "Mumbai Indians, Rajasthan Royals",
       "evidence_delivery_refs_sample": [
         "40711:2:14",
         "40711:2:15",
@@ -1057,6 +1083,7 @@
       "dot_pct": 40.42553191489361,
       "player_id": "39657",
       "scenario_coverage": 6,
+      "scenario_contribution": "W1, W2, W3, W4, W5, W6",
       "reliability": "MODERATE_COVERAGE",
       "eligibility_status": "PROVISIONALLY_ELIGIBLE",
       "consistency": "MATCH AND SEASON DISPERSION SHOWN; not uncertainty",
@@ -1065,6 +1092,7 @@
       "season_level_consistency_sd": 0.0291161615782695,
       "consistency_status": "DESCRIPTIVE_SD_AVAILABLE",
       "pressure_definition": "provisional-v0.1",
+      "teams": "Sunrisers Hyderabad",
       "evidence_delivery_refs_sample": [
         "40748:1:38",
         "40748:1:39",
@@ -1135,6 +1163,7 @@
       "dot_pct": 40.18691588785047,
       "player_id": "7322",
       "scenario_coverage": 6,
+      "scenario_contribution": "W1, W2, W3, W4, W5, W6",
       "reliability": "HIGHER_COVERAGE",
       "eligibility_status": "PROVISIONALLY_ELIGIBLE",
       "consistency": "MATCH AND SEASON DISPERSION SHOWN; not uncertainty",
@@ -1143,6 +1172,7 @@
       "season_level_consistency_sd": 1.9311708931197733,
       "consistency_status": "DESCRIPTIVE_SD_AVAILABLE",
       "pressure_definition": "provisional-v0.1",
+      "teams": "Gujarat Titans, Royal Challengers Bengaluru",
       "evidence_delivery_refs_sample": [
         "14128:2:39",
         "14128:2:40",
@@ -1213,6 +1243,7 @@
       "dot_pct": 48.05194805194805,
       "player_id": "29888",
       "scenario_coverage": 6,
+      "scenario_contribution": "W1, W2, W3, W4, W5, W6",
       "reliability": "MODERATE_COVERAGE",
       "eligibility_status": "PROVISIONALLY_ELIGIBLE",
       "consistency": "MATCH AND SEASON DISPERSION SHOWN; not uncertainty",
@@ -1221,6 +1252,7 @@
       "season_level_consistency_sd": 2.6952676291219384,
       "consistency_status": "DESCRIPTIVE_SD_AVAILABLE",
       "pressure_definition": "provisional-v0.1",
+      "teams": "Kolkata Knight Riders",
       "evidence_delivery_refs_sample": [
         "20219:2:66",
         "20219:2:67",
@@ -1291,6 +1323,7 @@
       "dot_pct": 30.0,
       "player_id": "6726",
       "scenario_coverage": 2,
+      "scenario_contribution": "W2, W5",
       "reliability": "MODERATE_COVERAGE",
       "eligibility_status": "PROVISIONALLY_ELIGIBLE",
       "consistency": "MATCH AND SEASON DISPERSION SHOWN; not uncertainty",
@@ -1299,6 +1332,7 @@
       "season_level_consistency_sd": 2.4167816064620595,
       "consistency_status": "DESCRIPTIVE_SD_AVAILABLE",
       "pressure_definition": "provisional-v0.1",
+      "teams": "Mumbai Indians, Royal Challengers Bengaluru, Sunrisers Hyderabad",
       "evidence_delivery_refs_sample": [
         "31251:2:67",
         "31251:2:68",
@@ -1369,6 +1403,7 @@
       "dot_pct": 51.57232704402516,
       "player_id": "4489",
       "scenario_coverage": 6,
+      "scenario_contribution": "W1, W2, W3, W4, W5, W6",
       "reliability": "HIGHER_COVERAGE",
       "eligibility_status": "PROVISIONALLY_ELIGIBLE",
       "consistency": "MATCH AND SEASON DISPERSION SHOWN; not uncertainty",
@@ -1377,6 +1412,7 @@
       "season_level_consistency_sd": 2.434769608714685,
       "consistency_status": "DESCRIPTIVE_SD_AVAILABLE",
       "pressure_definition": "provisional-v0.1",
+      "teams": "Gujarat Titans, Rajasthan Royals",
       "evidence_delivery_refs_sample": [
         "14113:2:12",
         "14113:2:13",
@@ -1447,6 +1483,7 @@
       "dot_pct": 36.708860759493675,
       "player_id": "1758",
       "scenario_coverage": 5,
+      "scenario_contribution": "W1, W3, W4, W5, W6",
       "reliability": "MODERATE_COVERAGE",
       "eligibility_status": "PROVISIONALLY_ELIGIBLE",
       "consistency": "MATCH AND SEASON DISPERSION SHOWN; not uncertainty",
@@ -1455,6 +1492,7 @@
       "season_level_consistency_sd": 3.6146650810796985,
       "consistency_status": "DESCRIPTIVE_SD_AVAILABLE",
       "pressure_definition": "provisional-v0.1",
+      "teams": "Kolkata Knight Riders, Sunrisers Hyderabad",
       "evidence_delivery_refs_sample": [
         "14150:2:86",
         "14150:2:87",
@@ -1525,6 +1563,7 @@
       "dot_pct": 39.24050632911392,
       "player_id": "7327",
       "scenario_coverage": 6,
+      "scenario_contribution": "W1, W2, W3, W4, W5, W6",
       "reliability": "MODERATE_COVERAGE",
       "eligibility_status": "PROVISIONALLY_ELIGIBLE",
       "consistency": "MATCH AND SEASON DISPERSION SHOWN; not uncertainty",
@@ -1533,6 +1572,7 @@
       "season_level_consistency_sd": 0.6796995416056741,
       "consistency_status": "DESCRIPTIVE_SD_AVAILABLE",
       "pressure_definition": "provisional-v0.1",
+      "teams": "Delhi Capitals, Kolkata Knight Riders, Royal Challengers Bengaluru",
       "evidence_delivery_refs_sample": [
         "31258:2:75",
         "31258:2:76",
@@ -1605,6 +1645,7 @@
       "dismissal_frequency": 0.04035874439461883,
       "player_id": "1077",
       "scenario_coverage": 9,
+      "scenario_contribution": "B1, B2, B3, B4, B5, B6, B8, B9, B10",
       "pressure_deliveries": 223,
       "reliability": "HIGHER_COVERAGE",
       "eligibility_status": "PROVISIONALLY_ELIGIBLE",
@@ -1613,7 +1654,8 @@
       "match_level_consistency_sd": 55.291900905139684,
       "season_level_consistency_sd": 28.497095205247927,
       "consistency_status": "DESCRIPTIVE_SD_AVAILABLE",
-      "pressure_definition": "provisional-v0.1"
+      "pressure_definition": "provisional-v0.1",
+      "teams": "Delhi Capitals, Gujarat Titans, Lucknow Super Giants"
     },
     {
       "rank": 12,
@@ -1640,6 +1682,7 @@
       "dismissal_frequency": 0.05825242718446602,
       "player_id": "4722",
       "scenario_coverage": 8,
+      "scenario_contribution": "B2, B3, B4, B5, B6, B8, B9, B10",
       "pressure_deliveries": 103,
       "reliability": "HIGHER_COVERAGE",
       "eligibility_status": "PROVISIONALLY_ELIGIBLE",
@@ -1648,7 +1691,8 @@
       "match_level_consistency_sd": 86.51233619781756,
       "season_level_consistency_sd": 71.28758588229829,
       "consistency_status": "DESCRIPTIVE_SD_AVAILABLE",
-      "pressure_definition": "provisional-v0.1"
+      "pressure_definition": "provisional-v0.1",
+      "teams": "Gujarat Titans"
     },
     {
       "rank": 13,
@@ -1675,6 +1719,7 @@
       "dismissal_frequency": 0.04838709677419355,
       "player_id": "20005",
       "scenario_coverage": 8,
+      "scenario_contribution": "B2, B3, B4, B5, B6, B8, B9, B10",
       "pressure_deliveries": 62,
       "reliability": "MODERATE_COVERAGE",
       "eligibility_status": "PROVISIONALLY_ELIGIBLE",
@@ -1683,7 +1728,8 @@
       "match_level_consistency_sd": 70.15774480323174,
       "season_level_consistency_sd": 82.0979619233817,
       "consistency_status": "DESCRIPTIVE_SD_AVAILABLE",
-      "pressure_definition": "provisional-v0.1"
+      "pressure_definition": "provisional-v0.1",
+      "teams": "Gujarat Titans, Lucknow Super Giants, Mumbai Indians"
     },
     {
       "rank": 14,
@@ -1710,6 +1756,7 @@
       "dismissal_frequency": 0.044444444444444446,
       "player_id": "3330",
       "scenario_coverage": 9,
+      "scenario_contribution": "B1, B2, B3, B5, B6, B7, B8, B9, B10",
       "pressure_deliveries": 135,
       "reliability": "HIGHER_COVERAGE",
       "eligibility_status": "PROVISIONALLY_ELIGIBLE",
@@ -1718,7 +1765,8 @@
       "match_level_consistency_sd": 77.96935517109988,
       "season_level_consistency_sd": 45.424667824384166,
       "consistency_status": "DESCRIPTIVE_SD_AVAILABLE",
-      "pressure_definition": "provisional-v0.1"
+      "pressure_definition": "provisional-v0.1",
+      "teams": "Gujarat Titans, Mumbai Indians"
     },
     {
       "rank": 15,
@@ -1745,6 +1793,7 @@
       "dismissal_frequency": 0.03571428571428571,
       "player_id": "2877",
       "scenario_coverage": 9,
+      "scenario_contribution": "B1, B2, B3, B4, B5, B6, B8, B9, B10",
       "pressure_deliveries": 112,
       "reliability": "MODERATE_COVERAGE",
       "eligibility_status": "PROVISIONALLY_ELIGIBLE",
@@ -1753,7 +1802,8 @@
       "match_level_consistency_sd": 37.60384263525355,
       "season_level_consistency_sd": 26.03168536412291,
       "consistency_status": "DESCRIPTIVE_SD_AVAILABLE",
-      "pressure_definition": "provisional-v0.1"
+      "pressure_definition": "provisional-v0.1",
+      "teams": "Chennai Super Kings, Gujarat Titans"
     }
   ],
   "next_bowlers": [
@@ -1782,6 +1832,7 @@
       "dot_pct": 28.205128205128204,
       "player_id": "8221",
       "scenario_coverage": 6,
+      "scenario_contribution": "W1, W2, W3, W4, W5, W6",
       "reliability": "MODERATE_COVERAGE",
       "eligibility_status": "PROVISIONALLY_ELIGIBLE",
       "consistency": "MATCH AND SEASON DISPERSION SHOWN; not uncertainty",
@@ -1789,7 +1840,8 @@
       "match_level_consistency_sd": 3.4425412776048923,
       "season_level_consistency_sd": 2.0040937624772437,
       "consistency_status": "DESCRIPTIVE_SD_AVAILABLE",
-      "pressure_definition": "provisional-v0.1"
+      "pressure_definition": "provisional-v0.1",
+      "teams": "Sunrisers Hyderabad"
     },
     {
       "rank": 12,
@@ -1816,6 +1868,7 @@
       "dot_pct": 36.92307692307693,
       "player_id": "395",
       "scenario_coverage": 4,
+      "scenario_contribution": "W2, W3, W5, W6",
       "reliability": "HIGHER_COVERAGE",
       "eligibility_status": "PROVISIONALLY_ELIGIBLE",
       "consistency": "MATCH AND SEASON DISPERSION SHOWN; not uncertainty",
@@ -1823,7 +1876,8 @@
       "match_level_consistency_sd": 4.375783527721804,
       "season_level_consistency_sd": 2.1042614798444257,
       "consistency_status": "DESCRIPTIVE_SD_AVAILABLE",
-      "pressure_definition": "provisional-v0.1"
+      "pressure_definition": "provisional-v0.1",
+      "teams": "Mumbai Indians, Royal Challengers Bengaluru"
     },
     {
       "rank": 13,
@@ -1850,6 +1904,7 @@
       "dot_pct": 39.58333333333333,
       "player_id": "1813",
       "scenario_coverage": 5,
+      "scenario_contribution": "W1, W3, W4, W5, W6",
       "reliability": "MODERATE_COVERAGE",
       "eligibility_status": "PROVISIONALLY_ELIGIBLE",
       "consistency": "MATCH AND SEASON DISPERSION SHOWN; not uncertainty",
@@ -1857,7 +1912,8 @@
       "match_level_consistency_sd": 7.576191065038822,
       "season_level_consistency_sd": 6.76726816132972,
       "consistency_status": "DESCRIPTIVE_SD_AVAILABLE",
-      "pressure_definition": "provisional-v0.1"
+      "pressure_definition": "provisional-v0.1",
+      "teams": "Chennai Super Kings, Mumbai Indians"
     },
     {
       "rank": 14,
@@ -1884,6 +1940,7 @@
       "dot_pct": 38.114754098360656,
       "player_id": "152",
       "scenario_coverage": 4,
+      "scenario_contribution": "W2, W3, W5, W6",
       "reliability": "HIGHER_COVERAGE",
       "eligibility_status": "PROVISIONALLY_ELIGIBLE",
       "consistency": "MATCH AND SEASON DISPERSION SHOWN; not uncertainty",
@@ -1891,7 +1948,8 @@
       "match_level_consistency_sd": 2.4708327750983012,
       "season_level_consistency_sd": 0.8201764173477935,
       "consistency_status": "DESCRIPTIVE_SD_AVAILABLE",
-      "pressure_definition": "provisional-v0.1"
+      "pressure_definition": "provisional-v0.1",
+      "teams": "Chennai Super Kings, Rajasthan Royals"
     },
     {
       "rank": 15,
@@ -1918,6 +1976,7 @@
       "dot_pct": 34.92063492063492,
       "player_id": "3644",
       "scenario_coverage": 4,
+      "scenario_contribution": "W2, W3, W5, W6",
       "reliability": "HIGHER_COVERAGE",
       "eligibility_status": "PROVISIONALLY_ELIGIBLE",
       "consistency": "MATCH AND SEASON DISPERSION SHOWN; not uncertainty",
@@ -1925,7 +1984,8 @@
       "match_level_consistency_sd": 2.3946149365045257,
       "season_level_consistency_sd": 1.4114960334343931,
       "consistency_status": "DESCRIPTIVE_SD_AVAILABLE",
-      "pressure_definition": "provisional-v0.1"
+      "pressure_definition": "provisional-v0.1",
+      "teams": "Delhi Capitals"
     }
   ],
   "ranking_note": "Ordered by pressure improvement over the player's pre-event IPL delivery baseline; scenario coverage and match counts are tie-breakers. No arbitrary composite score is used. Coverage floor and tie policy are provisional research recommendations, not approval."

@@ -311,7 +311,8 @@ def _group_summary(x: pd.DataFrame, key: str, discipline: str) -> pd.DataFrame:
         z["dot_pct"] = z.dots / z.opportunities * 100
         z["boundary_pct"] = z.boundary_balls / z.opportunities * 100
         z["dismissal_frequency"] = z.dismissals / z.opportunities
-        coverage = x[x[key]].groupby("striker_id")[[f"B{i}" for i in range(1, 11)]].any().sum(axis=1)
+        coverage_by = x[x[key]].groupby("striker_id")[[f"B{i}" for i in range(1, 11)]].any()
+        coverage = coverage_by.sum(axis=1)
         z["player_id"] = z.striker_id
     else:
         x = x.copy()
@@ -331,9 +332,11 @@ def _group_summary(x: pd.DataFrame, key: str, discipline: str) -> pd.DataFrame:
         z["delta_vs_prior"] = (z.prior_expected - z.conceded) / z.legal_balls.replace(0, np.nan) * 6
         z["wicket_rate"] = z.wickets / z.legal_balls.replace(0, np.nan) * 6
         z["dot_pct"] = z.dots / z.legal_balls.replace(0, np.nan) * 100
-        coverage = x[x[key]].groupby("bowler_id")[[f"W{i}" for i in range(1, 7)]].any().sum(axis=1)
+        coverage_by = x[x[key]].groupby("bowler_id")[[f"W{i}" for i in range(1, 7)]].any()
+        coverage = coverage_by.sum(axis=1)
         z["player_id"] = z.bowler_id
     z["scenario_coverage"] = z.player_id.map(coverage).fillna(0).astype(int)
+    z["scenario_contribution"] = z.player_id.map(coverage_by.apply(lambda row: ", ".join(row.index[row].tolist()), axis=1)).fillna("")
     if discipline == "batting":
         z["pressure_deliveries"] = z.opportunities
     z["reliability"] = np.select([z.matches.ge(10) & z.opportunities.ge(60), z.matches.ge(5) & z.opportunities.ge(30)], ["HIGHER_COVERAGE", "MODERATE_COVERAGE"], default="LOW_COVERAGE")
@@ -391,6 +394,13 @@ def build_product(write=True):
     x["bowler_name"] = x.bowler_id.map(player_map).fillna(x.bowler_name)
     bat = _group_summary(x, "batting_pressure", "batting")
     bowl = _group_summary(x, "bowling_pressure", "bowling")
+    team_names = (teams.drop_duplicates("team_id").set_index("team_id").team_name.astype(str).to_dict())
+    for table, player_col, event_player, team_col in [
+        (bat, "striker_id", "striker_id", "batting_team_id"),
+        (bowl, "bowler_id", "bowler_id", "bowling_team_id"),
+    ]:
+        seen_teams = x.groupby(event_player)[team_col].agg(lambda values: ", ".join(sorted({team_names.get(str(v), str(v)) for v in values.dropna()})))
+        table["teams"] = table[player_col].map(seen_teams).fillna("Unresolved team ID")
     bat_rank = _rank(bat, "batting")
     bowl_rank = _rank(bowl, "bowling")
     bat_scenarios, bowl_scenarios = [], []
