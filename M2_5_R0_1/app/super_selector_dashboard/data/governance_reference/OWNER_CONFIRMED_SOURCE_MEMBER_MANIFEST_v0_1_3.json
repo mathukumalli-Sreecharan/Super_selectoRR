@@ -1,0 +1,17 @@
+{
+  "project": "SupeRR Selector Season 2",
+  "archive_path": "D:\\Super Selector\\6af3166e7b922_data_pack.zip",
+  "archive_size_bytes": 6143211,
+  "archive_sha256": "a992ecd89b3f22c4d6bfdf5dc9faf767491f8199a6ec09c33ab347db675bd8e1",
+  "members": {
+    "6af855c0e8386_ball_by_ball.csv": {"size_bytes": 41071837, "sha256": "01e2b4379edfbab6a6e456d304cb3c70f554cb312ef93d9588f3f32a82cb396e"},
+    "matches.csv": {"size_bytes": 123864, "sha256": "bb100ab84b8b9a15160c1f2315cf675210131a30e779ec5079fd5403dcf56eef"},
+    "playing_eleven.csv": {"size_bytes": 966287, "sha256": "7517c73722a28d5d61c808ccf0cbed315a8780586d02e946eb9a7f5daf011c27"},
+    "competition_team_player_mapping.csv": {"size_bytes": 462969, "sha256": "1ded4e42a933618572d6e2c3a521c3257eb1844fab4456d567d77cbb2d3bbb12"},
+    "teams.csv": {"size_bytes": 6922, "sha256": "a65e5922a9b3bf49247b24fc9471782e700efb31f8dcc5042923238b87c50a5d"},
+    "competitions.csv": {"size_bytes": 7624, "sha256": "507ceb7189f972d4e4f299ddcfc97f3c3247af1913f6291106f161fa8353fd9b"},
+    "Round 1 Problem Statement _ SupeRR Selector Season 2.docx.pdf": {"size_bytes": 254082, "sha256": "8f7965c616d4a64b779e770a6b2c17dde6a2d6ccbf7de12a58b04db792162489"}
+  },
+  "scope": "Read-only archive inspection and data-quality validation only; no production metrics, comparisons, or rankings.",
+  "owner_confirmation_date": "2026-11-18"
+}

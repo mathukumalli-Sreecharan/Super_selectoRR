@@ -1,0 +1,36 @@
+{
+  "data_version": "ipl-source-archive-a992ecd8",
+  "methodology_version": "pressure-research-provisional-v0.1.0",
+  "population": "Competitions exactly named IPL 2022 through IPL 2026; exact competition and match IDs.",
+  "provisional_pressure_rule": {
+    "chase": "required run rate >= that season's mean first-innings scoring rate and wickets remaining <= 8",
+    "first_innings": "at least 4 wickets lost by legal ball 60, or at least 6 by legal ball 90",
+    "band": "binary research flag; continuous required-rate and wickets-remaining fields retained",
+    "rationale": "Uses season-specific observed first-innings scoring rate as a chase benchmark and explicit resource-loss states. This is a candidate operational definition, not formally approved."
+  },
+  "scenarios": {
+    "B1": "legal balls before delivery <36 and wickets lost >=2",
+    "B2": "36<=legal balls<90",
+    "B3": "legal balls>=90 and wickets remaining>=5",
+    "B4": "legal balls>=90 and two wickets fell in preceding 12 legal balls",
+    "B5": "valid chase, RRR>=season mean first-innings rate, wickets remaining<=5",
+    "B6": "B5 comparisons stratified by wickets remaining (1-3 versus 4-5)",
+    "B7": "striker batting_order<=3 and non-striker batting_order>=6, from pre-delivery lineup order",
+    "B8": "at least one wicket in preceding 12 legal balls",
+    "B9": "legal balls remaining<=30",
+    "B10": "change in defined pressure flag from previous delivery; outcome and pre-state separately retained",
+    "W1": "bowling in first 36 legal balls",
+    "W2": "bowler-credit dismissal with partnership >=20 runs before delivery",
+    "W3": "legal balls remaining<=30",
+    "W4": "Batter innings 2 and legal balls before delivery<36",
+    "W5": "Batter innings 2 and 36<=legal balls<90",
+    "W6": "Batter innings 2 and legal balls remaining<=30"
+  },
+  "known_limits": [
+    "Source run field semantics conflict with the supplied interpretation on extras rows; mismatching rows are excluded from state reconstruction.",
+    "2026 season is included exactly as present in the archive; the source snapshot date is not supplied.",
+    "B2 role is not inferred as anchor/aggressor; role is unavailable as a validated pre-event field.",
+    "Partnership and recent-wicket states are delivery reconstructed; DLS effective time is unavailable, so revised-target matches are excluded from chase classification.",
+    "Ranks are descriptive pressure-performance orderings and do not claim causal or uncertainty-adjusted player quality."
+  ]
+}
