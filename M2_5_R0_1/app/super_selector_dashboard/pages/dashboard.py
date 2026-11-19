@@ -104,17 +104,14 @@ def _ranking_page(r, discipline: str):
     if rank_table.empty:
         st.info("No player met the current evidence floor. No positions are filled without evidence.")
         return
-    floors = sorted(rank_table.matches.dropna().astype(int).unique())
-    floor = st.select_slider("Minimum represented matches", options=floors, value=min(5, max(floors))) if floors else 1
-    visible = rank_table[rank_table.matches >= floor].copy()
-    visible = visible.head(10).copy()
+    visible = rank_table.head(10).copy()
     visible.insert(0, "rank_display", range(1, len(visible) + 1))
     visible = visible.drop(columns=["rank"]).rename(columns={"rank_display": "rank"})
     _table(_format_ranking(visible, discipline))
     st.caption(f"{len(rank_table):,} players meet the current five-match/30-opportunity research floor before this filter. Data version {r['data_version']}; methodology {r['methodology_version']}.")
     if len(rank_table) > 10:
         st.markdown("**Next eligible candidates**")
-        next_rows = rank_table[rank_table.matches >= floor].iloc[10:15].copy()
+        next_rows = rank_table.iloc[10:15].copy()
         if not next_rows.empty:
             next_rows.insert(0, "rank_display", range(11, 11 + len(next_rows)))
             next_rows = next_rows.drop(columns=["rank"]).rename(columns={"rank_display": "rank"})
